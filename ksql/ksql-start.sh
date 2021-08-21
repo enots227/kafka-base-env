@@ -33,5 +33,7 @@ REPLACE="ksql.connect.url=${KSQL_CONNECT_URL}"
 sed -i "s/${FIND}/${REPLACE}/" ksql-server.properties
 
 # stark ksql ##############################
+/opt/bin/wait_for_them.sh
+
 cd $confluent_home
 bin/ksql-server-start etc/ksqldb/ksql-server.properties

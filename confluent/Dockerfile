@@ -1,4 +1,4 @@
-FROM kafka
+FROM kafka_st1
 
 # DOWNLOADS
 COPY ./confluentinc-kafka-connect-jdbc-10.0.1.zip   /tmp/confluentinc-kafka-connect-jdbc.zip

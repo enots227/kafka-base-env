@@ -1,4 +1,4 @@
-FROM java
+FROM java_st1
 
 # DOWNLOADS
 COPY ./apache-zookeeper-3.7.0-bin.tar.gz    /tmp/apache-zookeeper.tar.gz

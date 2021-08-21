@@ -19,5 +19,7 @@ REPLACE="kafkastore.bootstrap.servers=${SCHEMA_BROKERS}"
 sed -i "s/${FIND}/${REPLACE}/" schema-registry.properties
 
 # stark schema registry ##############################
+/opt/bin/wait_for_them.sh
+
 cd $confluent_home
 bin/schema-registry-start etc/schema-registry/schema-registry.properties

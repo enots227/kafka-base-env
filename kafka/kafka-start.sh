@@ -30,4 +30,6 @@ REPLACE="advertised.listeners=${KAFKA_ADVERTISED_LISTENERS}"
 sed -i "s/${FIND}/${REPLACE}/" server.properties
 
 # Start Kafka ############################
+/opt/bin/wait_for_them.sh
+
 $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
