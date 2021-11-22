@@ -13,23 +13,23 @@ sed -i "s/${FIND}/${REPLACE}/" ksql-server.properties
 
 # set brokers ============
 FIND="^bootstrap.servers=.*$"
-REPLACE="bootstrap.servers=${KSQL_BROKERS}"
+REPLACE="bootstrap.servers=${KAFKA_BROKERS}"
 sed -i "s/${FIND}/${REPLACE}/" ksql-server.properties
 
 # set schema registry ====
 # ensures / -> \/ (forward slashes escape the sed find and replace)
-KSQL_SCHEMA_REGISTRY=$(echo $KSQL_SCHEMA_REGISTRY | sed "s/\//\\\\\//g")
+SCHEMA_REGISTRY=$(echo $SCHEMA_REGISTRY | sed "s/\//\\\\\//g")
 
 FIND="^#\{0,1\}\s*ksql.schema.registry.url=.*$"
-REPLACE="ksql.schema.registry.url=${KSQL_SCHEMA_REGISTRY}"
+REPLACE="ksql.schema.registry.url=${SCHEMA_REGISTRY}"
 sed -i "s/${FIND}/${REPLACE}/" ksql-server.properties
 
 # set kafka connect integration ====
 # ensures / -> \/ (forward slashes escape the sed find and replace)
-KSQL_CONNECT_URL=$(echo $KSQL_CONNECT_URL | sed "s/\//\\\\\//g")
+CONNECTOR_URL=$(echo $CONNECTOR_URL | sed "s/\//\\\\\//g")
 
 FIND="^#\{0,1\}\s*ksql.connect.url=.*$"
-REPLACE="ksql.connect.url=${KSQL_CONNECT_URL}"
+REPLACE="ksql.connect.url=${CONNECTOR_URL}"
 sed -i "s/${FIND}/${REPLACE}/" ksql-server.properties
 
 # stark ksql ##############################
